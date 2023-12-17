@@ -1,0 +1,147 @@
+.calendar {
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+  max-height: 100vh; /* Add a max-height for better control */
+  padding: 3rem;
+}
+  
+  .month {
+    margin: 1rem;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .current-month {
+    background-color: #e1e1e1; /* Change the color as needed */
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .Add {
+    margin: 2rem;
+  }
+  .day {
+    cursor: pointer;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .day:hover {
+    background-color: red;
+  }
+  
+  .day.current-day {
+    background-color: rgb(56, 112, 243);
+    color: #fff;
+  }
+  
+  .day-name {
+    font-weight: bold;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .add-event {
+   border-radius: 0.3rem; 
+   /* border: 1px solid #ddd; */
+   font-size: 2rem;
+   cursor: pointer;
+   background-color: rgb(253, 253, 160);
+   border-color: yellow;
+  }
+  .view-event {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 2rem; 
+    background-color: rgb(181, 233, 181);
+    border-color: rgb(181, 233, 181);
+  }
+
+  .event-name {
+    font-size: 1rem;
+  }
+  .empty-day {
+    visibility: hidden; /* or display: none; */
+  }
+  
+  .delete-event {
+    border-radius: 2rem; 
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: rgb(152, 74, 180);
+    border-color:  rgb(152, 74, 180);
+  }
+  .events {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  .event {
+    color: black;
+  }
+  
+  /* Ensure the last two days are fully visible within the month box */
+  .month .days .day:nth-last-child(-n + 2) {
+    margin-bottom: 1rem;
+  }
+  
+  /* Highlight the current day */
+  .current-day {
+    background-color: rgb(121, 216, 244);
+  }
+  
+  /* Add more styles as needed */
+  
+  @media (max-width: 800px) {
+    .calendar {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .day {
+      font-size: 0.5rem;
+      padding: 0.3rem;
+    }
+  
+    .day-name {
+      font-size: 0.9rem;
+      padding: 0.6rem;
+    }
+  
+    .add-event {
+      font-size: 1rem;
+    }
+
+    .event-name {
+      font-size: 0.6rem;
+      margin: 0%;
+    }
+
+    .view-event,
+    .delete-event {
+      font-size: 0.4rem;
+      margin: 0%;
+    }
+    
+    .Add {
+      margin: 1rem;
+    }
+  }
+
+  
+  
+  
+  
