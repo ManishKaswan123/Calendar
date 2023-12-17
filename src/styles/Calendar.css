@@ -4,8 +4,9 @@
   overflow-y: scroll;
   max-height: 100vh; /* Add a max-height for better control */
   padding: 3rem;
+  position: relative;
 }
-  
+
   .month {
     margin: 1rem;
     border: 1px solid #ddd;
@@ -37,7 +38,7 @@
   }
   
   .day:hover {
-    background-color: red;
+    background-color: rgb(246, 168, 225);
   }
   
   .day.current-day {
@@ -83,11 +84,19 @@
     background-color: rgb(152, 74, 180);
     border-color:  rgb(152, 74, 180);
   }
+
   .events {
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
-    color: #555;
+    position:fixed;
+    left: 45%;
+    top: 30%;
+    z-index: 999; /* Adjust the z-index to a higher value */
+    background-color: rgb(237, 190, 190);
+    padding: 1rem;
+    border: 1px solid rgb(237, 190, 190);
+    border-radius: 0.5rem;
+    overflow: auto;
   }
+  
   .event {
     color: black;
   }
@@ -101,9 +110,16 @@
   .current-day {
     background-color: rgb(121, 216, 244);
   }
+
+  .event-view {
+    transform: translate(-50%, -50%);
+    background: rgb(244, 193, 193);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
   
-  /* Add more styles as needed */
-  
+/* Responsive   */
   @media (max-width: 800px) {
     .calendar {
       padding: 1rem;
@@ -141,7 +157,6 @@
     }
   }
 
-  
   
   
   

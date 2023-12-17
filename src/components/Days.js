@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Day = ({ date, events, onDayClick, onViewEvents, onDeleteEvent, className }) => {
+const Day = ({ date, events, onDayClick, onDeleteEvent, className }) => {
+  const [showEvents, setShowEvents] = useState(false);
 
-  const [isVisible , setIsVisible] = useState(false);
-  const [view , seView] = useState("View");
   const handleDayClick = () => {
     onDayClick(date);
   };
 
-  const handleViewEvents = () => {
-    // onViewEvents(date);
-    setIsVisible(!isVisible);
-    if(view === "View")
-      seView("Hide");
-    else
-      seView("View");
+  const handleToggleEvents = () => {
+    setShowEvents(!showEvents);
   };
 
   const handleDeleteEvent = (eventName) => {
@@ -25,9 +19,12 @@ const Day = ({ date, events, onDayClick, onViewEvents, onDeleteEvent, className 
   return (
     <div className={`day ${className}`} onClick={handleDayClick}>
       <div className="day-number">{date.getDate()}</div>
-      {events && events.length > 0 && (
+      <button className="view-event" onClick={handleToggleEvents}>
+        {showEvents ? 'Hide' : 'View'}
+      </button>
+      {showEvents && events.length > 0 && (
         <div className="events">
-          {isVisible && events.map((event, index) => (
+          {events.map((event, index) => (
             <div key={index} className="event">
               <span className="event-name">{event.eventName}</span>
               <button className="delete-event" onClick={() => handleDeleteEvent(event.eventName)}>
@@ -37,9 +34,6 @@ const Day = ({ date, events, onDayClick, onViewEvents, onDeleteEvent, className 
           ))}
         </div>
       )}
-      <button className="view-event" onClick={handleViewEvents}>
-        {view}
-      </button>
     </div>
   );
 };
@@ -53,10 +47,9 @@ Day.propTypes = {
     })
   ),
   onDayClick: PropTypes.func.isRequired,
-  onAddEvent: PropTypes.func.isRequired,
-  onViewEvents: PropTypes.func.isRequired,
   onDeleteEvent: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 
 export default Day;
+

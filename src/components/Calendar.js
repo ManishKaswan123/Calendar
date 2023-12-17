@@ -73,7 +73,6 @@ const Calendar = () => {
                   events={eventsForDate}
                   onDayClick={(date) => handleDayClick(date)}
                   className={isCurrentMonth && day.getDate() === new Date().getDate() ? 'current-day' : ''}
-                  // onAddEvent={handleAddEvent}
                   onViewEvents={handleViewEvents}
                   onDeleteEvent={handleDeleteEvent}
                 />
